@@ -3,10 +3,10 @@ name: CI/CD Workflow
 on:
   push:
     branches:
-      - main    # Trigger workflow on push to the 'main' branch
+      - master    # Trigger workflow on push to the 'main' branch
   pull_request:
     branches:
-      - main    # Trigger workflow on pull request to the 'main' branch
+      - master    # Trigger workflow on pull request to the 'main' branch
 
 jobs:
   build:
