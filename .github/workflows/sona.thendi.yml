@@ -38,10 +38,11 @@ jobs:
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
         with:
+          output: results.sarif
           category: javascript-${{ github.run_id }}  # Unique category per run
 
       - name: Upload CodeQL results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v3
         with:
-          sarif_file: ${{ github.workspace }}/results.sarif
+          sarif_file: results.sarif
           category: javascript-${{ github.run_id }}
