@@ -39,12 +39,13 @@ jobs:
         uses: github/codeql-action/analyze@v3
         with:
           output: results.sarif
-          category: javascript-${{ github.run_id }}-${{ github.job }}
+          category: javascript-${{ github.run_id }}-${{ github.job }}-${{ github.run_attempt }}
 
-    
+      - name: Debug SARIF File
+        run: cat results.sarif
 
       - name: Upload CodeQL results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: results.sarif
-          category: javascript-${{ github.run_id }}-${{ github.job }}
+          category: javascript-${{ github.run_id }}-${{ github.job }}-${{ github.run_attempt }}
