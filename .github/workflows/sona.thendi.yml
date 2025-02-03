@@ -41,8 +41,7 @@ jobs:
           output: results.sarif
           category: javascript-${{ github.run_id }}-${{ github.job }}
 
-      - name: Debug SARIF Files
-        run: cat results.sarif
+    
 
       - name: Upload CodeQL results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v3
