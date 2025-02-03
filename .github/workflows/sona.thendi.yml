@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:
   pull_request:
 
 permissions:
@@ -39,8 +38,10 @@ jobs:
         uses: github/codeql-action/analyze@v3
         with:
           output: results.sarif
+          category: javascript-${{ github.run_id }}  # Unique category per run
 
       - name: Upload CodeQL results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: results.sarif
+          category: javascript-${{ github.run_id }}  # Matches the analyze step
